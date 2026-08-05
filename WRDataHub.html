@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="WRDataHub: base de datos comunitaria no oficial de War Robots. Robots, titanes, armas, Top Global y reportes documentados por la comunidad.">
+<title>WRDataHub</title>
+<style>
+:root{--bg:#050b12;--bg2:#071421;--panel:#0d1d2a;--panel2:#11283a;--line:#24445a;--text:#edf8ff;--muted:#9bb1c0;--cyan:#53d7ff;--blue:#2d9cff;--red:#ff5967;--orange:#ffb248;--green:#3cd68b;--shadow:0 18px 50px #0008}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 80% -10%,#12334a 0,transparent 28%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text)}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit}
+header{position:sticky;top:0;z-index:50;background:#050b12e8;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1320px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:20px}
+.brand{font-size:24px;font-weight:950;letter-spacing:.4px} .brand span{color:var(--cyan)}
+nav{display:flex;gap:16px;flex-wrap:wrap} nav a{color:var(--muted);font-size:14px;font-weight:700} nav a:hover{color:white}
+.hero{max-width:1320px;margin:auto;padding:86px 20px 60px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:.95;margin:12px 0 20px} .hero h1 span{color:var(--cyan)}
+.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px}
+.badge{display:inline-flex;padding:8px 12px;border-radius:999px;background:#14344a;color:#bcefff;font-size:12px;font-weight:900;border:1px solid #285f7e}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{border:1px solid var(--line);background:var(--panel2);color:white;padding:13px 18px;border-radius:11px;font-weight:900;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#00121d;border:0}
+.hero-panel{background:linear-gradient(145deg,#10293a,#09151f);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{background:#07141e;border:1px solid var(--line);border-radius:14px;padding:18px} .stat b{font-size:30px;color:var(--cyan)} .stat span{display:block;color:var(--muted);margin-top:6px}
+main section{max-width:1320px;margin:auto;padding:62px 20px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}
+h2{font-size:clamp(30px,4vw,48px);margin:0} .lead{color:var(--muted);line-height:1.6;max-width:760px}
+.searchbox{background:#07141e;color:white;border:1px solid var(--line);padding:12px 14px;border-radius:11px;min-width:280px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px} .tab{border:1px solid var(--line);background:#0b1b28;color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800} .tab.active{background:var(--blue);color:white;border-color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.item-card,.report-card,.box{background:linear-gradient(150deg,var(--panel),#091722);border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 10px 32px #0004}
+.image-button{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.item-card img{width:100%;height:240px;object-fit:cover;display:block}
+.item-content{padding:18px} .item-content h3{font-size:23px;margin:10px 0 8px} .item-content p{color:var(--muted);line-height:1.5;margin:0}
+.pill,.eyebrow{font-size:11px;font-weight:950;letter-spacing:.9px;color:#bdeeff;background:#13364c;padding:6px 9px;border-radius:999px}
+.table-wrap{overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+table{width:100%;border-collapse:collapse;min-width:780px} th,td{padding:14px;border-bottom:1px solid #1b3b4f;text-align:left} th{background:#133247;color:#bfeeff} tr:hover td{background:#102b3c}
+.top-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px} .top-gallery img{width:100%;height:260px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.warning{background:#311a20;border:1px solid #74333e;border-left:5px solid var(--red);padding:17px;border-radius:13px;color:#ffd8dc;line-height:1.55}
+.report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}
+.report-head{padding:18px;display:flex;justify-content:space-between;gap:15px;align-items:start} .report-head h3{font-size:25px;margin:10px 0 4px} .report-head p{margin:0;color:var(--muted)}
+.status{font-size:11px;font-weight:950;padding:8px 10px;border-radius:999px;color:#ffbdc4;background:#4c2028;white-space:nowrap}
+.report-images{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 12px} .report-images img{width:100%;height:245px;object-fit:cover;border-radius:11px;border:1px solid var(--line)}
+.report-meta{display:flex;gap:10px;flex-wrap:wrap;padding:16px;color:var(--muted);font-size:13px}
+.form-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+.form-box{padding:22px} label{display:block;font-weight:800;margin:14px 0 7px} input,textarea,select{width:100%;background:#07141e;color:white;border:1px solid var(--line);border-radius:10px;padding:12px} textarea{min-height:130px;resize:vertical}
+.drop{border:2px dashed #315f78;border-radius:14px;padding:18px;text-align:center;color:var(--muted);background:#081823} .drop input{border:0;padding:8px}
+.preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px} .preview-grid img,.preview-grid video{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.note{color:var(--muted);font-size:13px;line-height:1.55} .ok{color:#a9ffd1}
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px} .check{display:flex;gap:8px;align-items:center;background:#091a27;border:1px solid var(--line);padding:10px;border-radius:10px} .check input{width:auto}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px} .roadmap .box{padding:18px} .roadmap h3{margin-top:0}
+footer{border-top:1px solid var(--line);padding:35px 20px;text-align:center;color:var(--muted)}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:#000e;align-items:center;justify-content:center;padding:20px} .modal.show{display:flex} .modal img{max-width:96vw;max-height:92vh;border-radius:13px}
+.hidden{display:none!important}
+@media(max-width:980px){.hero,.form-layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.report-grid{grid-template-columns:1fr}.roadmap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){nav{display:none}.grid,.top-gallery,.roadmap{grid-template-columns:1fr}.report-images{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.searchbox{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">WR<span>DataHub</span></div><nav>
+<a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#inicio">Inicio</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#top">Top Global</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#reportados">Reportados</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#equipamiento">Equipamiento</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#robots">Robots</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#titanes">Titanes</a><a href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#enviar">Enviar reporte</a>
+</nav></div></header>
+
+<main>
+<section class="hero" id="inicio">
+<div>
+<span class="badge">PROYECTO COMUNITARIO NO OFICIAL</span>
+<h1>Todo War Robots en un solo <span>Data Hub</span>.</h1>
+<p>Base de datos visual con Top Global, jugadores reportados por la comunidad, mejores armas ligeras, medias y pesadas, robots recientes, titanes y un formulario para documentar nuevas evidencias.</p>
+<div class="actions"><a class="btn primary" href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#equipamiento">Explorar contenido</a><a class="btn" href="file:///C:/Users/rruss/OneDrive/Desktop/WRDataHub_Pro_Listo_Para_GitHub%20V2/index.html#enviar">Enviar reporte</a></div>
+</div>
+<div class="hero-panel"><div class="stats">
+<div class="stat"><b>30</b><span>Top Global registrado</span></div>
+<div class="stat"><b>8</b><span>Casos documentados</span></div>
+<div class="stat"><b>24</b><span>Armas destacadas</span></div>
+<div class="stat"><b>24</b><span>Robots y titanes</span></div>
+</div></div>
+</section>
+
+<section>
+<div class="section-head"><div><h2>Buscar en WRDataHub</h2><p class="lead">Busca nombres de armas, robots, titanes o jugadores reportados.</p></div><input id="globalSearch" class="searchbox" placeholder="Ejemplo: Atlas, Hippo, Dũng-Tiny…"></div>
+</section>
+
+<section id="top">
+<div class="section-head"><div><h2>Top Global</h2><p class="lead">Registro visual del Top 30 del 05/08/2026.</p></div></div>
+<div class="top-gallery">
+<button class="image-button" data-image="assets/top/top_01_10.png"></button>
+
+
+</div>
+</section>
+
+<section id="reportados">
+<div class="section-head"><div><h2>Jugadores del Top Global reportados por la comunidad</h2><p class="lead">Cada caso conserva capturas del perfil y del hangar en el orden recibido.</p></div></div>
+<div class="warning"><b>Descargo de responsabilidad:</b> la presencia de un jugador en esta sección significa que fue reportado por miembros de la comunidad. No constituye una confirmación oficial de uso de software no autorizado ni una sanción emitida por Pixonic.</div>
+<div class="report-grid">
+    <article class="report-card searchable" data-search="dũng-tiny reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>Dũng-Tiny</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_01.png"><img loading="lazy" src="./WRDataHub_files/reporte_01.png" alt="Evidencia de Dũng-Tiny"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_02.png"><img loading="lazy" src="./WRDataHub_files/reporte_02.png" alt="Hangar de Dũng-Tiny"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="coop2win reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>COOP2WIN</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_03.png"><img loading="lazy" src="./WRDataHub_files/reporte_03.png" alt="Evidencia de COOP2WIN"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_04.png"><img loading="lazy" src="./WRDataHub_files/reporte_04.png" alt="Hangar de COOP2WIN"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="华夏【九州】 reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>华夏【九州】</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_05.png"><img loading="lazy" src="./WRDataHub_files/reporte_05.png" alt="Evidencia de 华夏【九州】"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_06.png"><img loading="lazy" src="./WRDataHub_files/reporte_06.png" alt="Hangar de 华夏【九州】"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="türk wr reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>Türk WR</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_07.png"><img loading="lazy" src="./WRDataHub_files/reporte_07.png" alt="Evidencia de Türk WR"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_08.png"><img loading="lazy" src="./WRDataHub_files/reporte_08.png" alt="Hangar de Türk WR"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="nigeriannightmar reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>NigerianNightmar</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_09.png"><img loading="lazy" src="./WRDataHub_files/reporte_09.png" alt="Evidencia de NigerianNightmar"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_10.png"><img loading="lazy" src="./WRDataHub_files/reporte_10.png" alt="Hangar de NigerianNightmar"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="el hambre reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>El Hambre</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_11.png"><img loading="lazy" src="./WRDataHub_files/reporte_11.png" alt="Evidencia de El Hambre"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_12.png"><img loading="lazy" src="./WRDataHub_files/reporte_12.png" alt="Hangar de El Hambre"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="龙炎之力 reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>龙炎之力</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_13.png"><img loading="lazy" src="./WRDataHub_files/reporte_13.png" alt="Evidencia de 龙炎之力"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_14.png"><img loading="lazy" src="./WRDataHub_files/reporte_14.png" alt="Hangar de 龙炎之力"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article>
+
+    <article class="report-card searchable" data-search="id q0p8h6 reportado top global">
+      <div class="report-head">
+        <div>
+          <span class="eyebrow">TOP GLOBAL</span>
+          <h3>ID Q0P8H6</h3>
+          <p>Jugador del Top Global reportado por la comunidad.</p>
+        </div>
+        <span class="status">EN REVISIÓN</span>
+      </div>
+      <div class="report-images">
+        <button class="image-button" data-image="assets/reportes/reporte_15.png"><img loading="lazy" src="./WRDataHub_files/reporte_15.png" alt="Evidencia de ID Q0P8H6"></button>
+        <button class="image-button" data-image="assets/reportes/reporte_16.png"><img loading="lazy" src="./WRDataHub_files/reporte_16.png" alt="Hangar de ID Q0P8H6"></button>
+      </div>
+      <div class="report-meta">
+        <span>📷 2 capturas</span><span>📅 05/08/2026</span><span>📌 Reportado por la comunidad</span>
+      </div>
+    </article></div>
+</section>
+
+<section id="equipamiento">
+<div class="section-head"><div><h2>Mejor equipamiento</h2><p class="lead">Galerías separadas por tipo de arma. Usa las pestañas para cambiar de categoría.</p></div></div>
+<div class="tabs">
+<button class="tab active" data-tab="ligeras">Ligeras</button>
+<button class="tab" data-tab="medias">Medias</button>
+<button class="tab" data-tab="pesadas">Pesadas</button>
+</div>
+<div id="ligeras" class="tab-panel grid">
+        <article class="item-card searchable" data-search="hippo ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_01.png" aria-label="Ampliar imagen de Hippo">
+            <img loading="lazy" src="./WRDataHub_files/ligera_01.png" alt="Hippo">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Hippo</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="elox ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_02.png" aria-label="Ampliar imagen de Elox">
+            <img loading="lazy" src="./WRDataHub_files/ligera_02.png" alt="Elox">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Elox</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="gladius ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_03.png" aria-label="Ampliar imagen de Gladius">
+            <img loading="lazy" src="./WRDataHub_files/ligera_03.png" alt="Gladius">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Gladius</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="velos ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_04.png" aria-label="Ampliar imagen de Velos">
+            <img loading="lazy" src="./WRDataHub_files/ligera_04.png" alt="Velos">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Velos</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="celsius ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_05.png" aria-label="Ampliar imagen de Celsius">
+            <img loading="lazy" src="./WRDataHub_files/ligera_05.png" alt="Celsius">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Celsius</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="lumen-l ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_06.png" aria-label="Ampliar imagen de Lumen-L">
+            <img loading="lazy" src="./WRDataHub_files/ligera_06.png" alt="Lumen-L">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Lumen-L</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="voonith ligeras">
+          <button class="image-button" type="button" data-image="assets/ligeras/ligera_07.png" aria-label="Ampliar imagen de Voonith">
+            <img loading="lazy" src="./WRDataHub_files/ligera_07.png" alt="Voonith">
+          </button>
+          <div class="item-content">
+            <span class="pill">LIGERA</span>
+            <h3>Voonith</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article></div>
+<div id="medias" class="tab-panel grid hidden">
+        <article class="item-card searchable" data-search="kroko medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_01.png" aria-label="Ampliar imagen de Kroko">
+            <img loading="lazy" src="./WRDataHub_files/media_01.png" alt="Kroko">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Kroko</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="murix medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_02.png" aria-label="Ampliar imagen de Murix">
+            <img loading="lazy" src="./WRDataHub_files/media_02.png" alt="Murix">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Murix</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="machaira medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_03.png" aria-label="Ampliar imagen de Machaira">
+            <img loading="lazy" src="./WRDataHub_files/media_03.png" alt="Machaira">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Machaira</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="nanea medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_04.png" aria-label="Ampliar imagen de Nanea">
+            <img loading="lazy" src="./WRDataHub_files/media_04.png" alt="Nanea">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Nanea</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="bash medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_05.png" aria-label="Ampliar imagen de Bash">
+            <img loading="lazy" src="./WRDataHub_files/media_05.png" alt="Bash">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Bash</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="fahrenheit medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_06.png" aria-label="Ampliar imagen de Fahrenheit">
+            <img loading="lazy" src="./WRDataHub_files/media_06.png" alt="Fahrenheit">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Fahrenheit</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="arm m-80 medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_07.png" aria-label="Ampliar imagen de ARM M-80">
+            <img loading="lazy" src="./WRDataHub_files/media_07.png" alt="ARM M-80">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>ARM M-80</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="lumen-m medias">
+          <button class="image-button" type="button" data-image="assets/medias/media_08.png" aria-label="Ampliar imagen de Lumen-M">
+            <img loading="lazy" src="./WRDataHub_files/media_08.png" alt="Lumen-M">
+          </button>
+          <div class="item-content">
+            <span class="pill">MEDIA</span>
+            <h3>Lumen-M</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article></div>
+<div id="pesadas" class="tab-panel grid hidden">
+        <article class="item-card searchable" data-search="liodari pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_01.png" aria-label="Ampliar imagen de Liodari">
+            <img loading="lazy" src="./WRDataHub_files/pesada_01.png" alt="Liodari">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Liodari</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="pilum pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_02.png" aria-label="Ampliar imagen de Pilum">
+            <img loading="lazy" src="./WRDataHub_files/pesada_02.png" alt="Pilum">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Pilum</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="boom pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_03.png" aria-label="Ampliar imagen de Boom">
+            <img loading="lazy" src="./WRDataHub_files/pesada_03.png" alt="Boom">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Boom</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="kelvin pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_04.png" aria-label="Ampliar imagen de Kelvin">
+            <img loading="lazy" src="./WRDataHub_files/pesada_04.png" alt="Kelvin">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Kelvin</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="basileus pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_05.png" aria-label="Ampliar imagen de Basileus">
+            <img loading="lazy" src="./WRDataHub_files/pesada_05.png" alt="Basileus">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Basileus</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="piercer pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_06.png" aria-label="Ampliar imagen de Piercer">
+            <img loading="lazy" src="./WRDataHub_files/pesada_06.png" alt="Piercer">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Piercer</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="dune pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_07.png" aria-label="Ampliar imagen de Dune">
+            <img loading="lazy" src="./WRDataHub_files/pesada_07.png" alt="Dune">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Dune</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="athos pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_08.png" aria-label="Ampliar imagen de Athos">
+            <img loading="lazy" src="./WRDataHub_files/pesada_08.png" alt="Athos">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Athos</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="shantak pesadas">
+          <button class="image-button" type="button" data-image="assets/pesadas/pesada_09.png" aria-label="Ampliar imagen de Shantak">
+            <img loading="lazy" src="./WRDataHub_files/pesada_09.png" alt="Shantak">
+          </button>
+          <div class="item-content">
+            <span class="pill">PESADA</span>
+            <h3>Shantak</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article></div>
+</section>
+
+<section id="robots">
+<div class="section-head"><div><h2>Robots más nuevos y destacados</h2><p class="lead">Doce fichas visuales listas para completar con datos más detallados.</p></div></div>
+<div class="grid">
+        <article class="item-card searchable" data-search="vector robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_01.png" aria-label="Ampliar imagen de Vector">
+            <img loading="lazy" src="./WRDataHub_files/robot_01.png" alt="Vector">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Vector</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="vulcan robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_02.png" aria-label="Ampliar imagen de Vulcan">
+            <img loading="lazy" src="./WRDataHub_files/robot_02.png" alt="Vulcan">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Vulcan</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="shoggoth robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_03.png" aria-label="Ampliar imagen de Shoggoth">
+            <img loading="lazy" src="./WRDataHub_files/robot_03.png" alt="Shoggoth">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Shoggoth</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="anaksor robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_04.png" aria-label="Ampliar imagen de Anaksor">
+            <img loading="lazy" src="./WRDataHub_files/robot_04.png" alt="Anaksor">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Anaksor</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="ammit robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_05.png" aria-label="Ampliar imagen de Ammit">
+            <img loading="lazy" src="./WRDataHub_files/robot_05.png" alt="Ammit">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Ammit</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="pathfinder robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_06.png" aria-label="Ampliar imagen de Pathfinder">
+            <img loading="lazy" src="./WRDataHub_files/robot_06.png" alt="Pathfinder">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Pathfinder</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="bagliore robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_07.png" aria-label="Ampliar imagen de Bagliore">
+            <img loading="lazy" src="./WRDataHub_files/robot_07.png" alt="Bagliore">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Bagliore</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="rex robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_08.png" aria-label="Ampliar imagen de Rex">
+            <img loading="lazy" src="./WRDataHub_files/robot_08.png" alt="Rex">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Rex</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="dux robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_09.png" aria-label="Ampliar imagen de Dux">
+            <img loading="lazy" src="./WRDataHub_files/robot_09.png" alt="Dux">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Dux</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="ultimate rhino robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_10.png" aria-label="Ampliar imagen de Ultimate Rhino">
+            <img loading="lazy" src="./WRDataHub_files/robot_10.png" alt="Ultimate Rhino">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Ultimate Rhino</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="ultimate hawk robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_11.png" aria-label="Ampliar imagen de Ultimate Hawk">
+            <img loading="lazy" src="./WRDataHub_files/robot_11.png" alt="Ultimate Hawk">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Ultimate Hawk</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="curie robots">
+          <button class="image-button" type="button" data-image="assets/robots/robot_12.png" aria-label="Ampliar imagen de Curie">
+            <img loading="lazy" src="./WRDataHub_files/robot_12.png" alt="Curie">
+          </button>
+          <div class="item-content">
+            <span class="pill">ROBOT</span>
+            <h3>Curie</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article></div>
+</section>
+
+<section id="titanes">
+<div class="section-head"><div><h2>Titanes más nuevos</h2><p class="lead">Princeps, Atlas, Bjorn, Waymaker, Bersagliere, Mauler y otros perfiles recientes incluidos en tus capturas.</p></div></div>
+<div class="grid">
+        <article class="item-card searchable" data-search="princeps titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_01.png" aria-label="Ampliar imagen de Princeps">
+            <img loading="lazy" src="./WRDataHub_files/titan_01.png" alt="Princeps">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Princeps</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="atlas titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_02.png" aria-label="Ampliar imagen de Atlas">
+            <img loading="lazy" src="./WRDataHub_files/titan_02.png" alt="Atlas">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Atlas</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="bjorn titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_03.png" aria-label="Ampliar imagen de Bjorn">
+            <img loading="lazy" src="./WRDataHub_files/titan_03.png" alt="Bjorn">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Bjorn</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="waymaker titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_04.png" aria-label="Ampliar imagen de Waymaker">
+            <img loading="lazy" src="./WRDataHub_files/titan_04.png" alt="Waymaker">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Waymaker</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="bersagliere titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_05.png" aria-label="Ampliar imagen de Bersagliere">
+            <img loading="lazy" src="./WRDataHub_files/titan_05.png" alt="Bersagliere">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Bersagliere</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="mauler titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_06.png" aria-label="Ampliar imagen de Mauler">
+            <img loading="lazy" src="./WRDataHub_files/titan_06.png" alt="Mauler">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Mauler</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 7 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_07.png" aria-label="Ampliar imagen de Titán 7">
+            <img loading="lazy" src="./WRDataHub_files/titan_07.png" alt="Titán 7">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 7</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 8 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_08.png" aria-label="Ampliar imagen de Titán 8">
+            <img loading="lazy" src="./WRDataHub_files/titan_08.png" alt="Titán 8">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 8</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 9 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_09.png" aria-label="Ampliar imagen de Titán 9">
+            <img loading="lazy" src="./WRDataHub_files/titan_09.png" alt="Titán 9">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 9</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 10 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_10.png" aria-label="Ampliar imagen de Titán 10">
+            <img loading="lazy" src="./WRDataHub_files/titan_10.png" alt="Titán 10">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 10</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 11 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_11.png" aria-label="Ampliar imagen de Titán 11">
+            <img loading="lazy" src="./WRDataHub_files/titan_11.png" alt="Titán 11">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 11</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article>
+
+        <article class="item-card searchable" data-search="titán 12 titanes">
+          <button class="image-button" type="button" data-image="assets/titanes/titan_12.png" aria-label="Ampliar imagen de Titán 12">
+            <img loading="lazy" src="./WRDataHub_files/titan_12.png" alt="Titán 12">
+          </button>
+          <div class="item-content">
+            <span class="pill">TITANE</span>
+            <h3>Titán 12</h3>
+            <p>Ficha visual añadida a partir de las capturas del juego. Lista para completar con estadísticas, alcance, recarga, habilidad y recomendaciones.</p>
+          </div>
+        </article></div>
+</section>
+
+<section id="enviar">
+<div class="section-head"><div><h2>Enviar reporte de comportamiento sospechoso</h2><p class="lead">El formulario permite preparar un reporte, previsualizar imágenes o videos y descargar un archivo JSON para revisión.</p></div></div>
+<div class="form-layout">
+<form class="box form-box" id="reportForm">
+<label>Nombre del jugador reportado</label><input required="" id="playerName" placeholder="Nombre dentro del juego">
+<label>ID del jugador</label><input id="playerId" placeholder="Ejemplo: ABC123">
+<label>Clan o región</label><input id="clanRegion" placeholder="Clan, país o servidor">
+<label>Modo de juego</label><select id="gameMode"><option>Dominación</option><option>Beacon Rush</option><option>Team Deathmatch</option><option>Free For All</option><option>Otro</option></select>
+<label>Tipo de comportamiento</label>
+<div class="checks">
+<label class="check"><input type="checkbox" value="Daño anómalo">Daño anómalo</label>
+<label class="check"><input type="checkbox" value="Velocidad anómala">Velocidad anómala</label>
+<label class="check"><input type="checkbox" value="Invencibilidad">Invencibilidad</label>
+<label class="check"><input type="checkbox" value="Cooldown anómalo">Cooldown anómalo</label>
+<label class="check"><input type="checkbox" value="Teletransporte">Teletransporte</label>
+<label class="check"><input type="checkbox" value="Otro">Otro</label>
+</div>
+<label>Descripción detallada</label><textarea required="" id="description" placeholder="Describe qué ocurrió, mapa, momento de la partida y señales observadas…"></textarea>
+<label>Evidencias</label>
+<div class="drop"><input id="evidenceFiles" type="file" accept="image/*,video/*" multiple=""><p>Selecciona imágenes o videos. Máximo recomendado: 10 archivos.</p></div>
+<div id="preview" class="preview-grid"></div>
+<div class="actions"><button class="btn primary" type="submit">Preparar reporte</button><button class="btn" type="button" id="clearForm">Limpiar</button></div>
+<p id="formStatus" class="note"></p>
+</form>
+
+<div class="box form-box">
+<h3>¿Cómo funcionará cuando tenga servidor?</h3>
+<p class="lead">En GitHub Pages esta página es estática: puede previsualizar archivos y crear el reporte, pero no puede almacenarlos de forma permanente por sí sola.</p>
+<div class="roadmap" style="grid-template-columns:1fr 1fr">
+<div class="box" style="padding:15px"><b>1. Envío</b><p class="note">El usuario adjunta evidencias y descripción.</p></div>
+<div class="box" style="padding:15px"><b>2. Revisión</b><p class="note">El administrador revisa el caso antes de publicarlo.</p></div>
+<div class="box" style="padding:15px"><b>3. Estado</b><p class="note">En revisión, archivado o publicado como reportado.</p></div>
+<div class="box" style="padding:15px"><b>4. Historial</b><p class="note">Se conserva fecha, evidencia y actualizaciones.</p></div>
+</div>
+<h3>Para activar subidas reales</h3>
+<p class="note">Conecta este formulario a un servicio como Supabase, Firebase, Cloudinary o un servidor propio. Nunca publiques automáticamente una acusación: todos los envíos deben quedar pendientes de revisión.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="section-head"><div><h2>Lo que todavía haría falta</h2><p class="lead">La estructura ya está preparada; estas serían las siguientes mejoras.</p></div></div>
+<div class="roadmap">
+<div class="box"><h3>Panel administrador</h3><p class="note">Aprobar, rechazar, editar y archivar reportes.</p></div>
+<div class="box"><h3>Base de datos real</h3><p class="note">Guardar perfiles, estadísticas, imágenes y videos.</p></div>
+<div class="box"><h3>Formulario conectado</h3><p class="note">Subidas reales con límites, antivirus y moderación.</p></div>
+<div class="box"><h3>Dominio propio</h3><p class="note">Una dirección profesional como wrdatahub.com.</p></div>
+</div>
+</section>
+</main>
+
+<footer><b>WRDataHub</b> · Proyecto comunitario no oficial · Sin nombres personales ni autor visible en la página.</footer>
+<div class="modal" id="modal"><img id="modalImg" alt="Vista ampliada" src="./WRDataHub_files/top_01_10.png"></div>
+
+<script>
+const modal=document.getElementById('modal'),modalImg=document.getElementById('modalImg');
+document.querySelectorAll('[data-image]').forEach(b=>b.addEventListener('click',()=>{modalImg.src=b.dataset.image;modal.classList.add('show')}));
+modal.addEventListener('click',()=>modal.classList.remove('show'));
+
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tab-panel').forEach(x=>x.classList.add('hidden'));
+ btn.classList.add('active'); document.getElementById(btn.dataset.tab).classList.remove('hidden');
+}));
+
+const globalSearch=document.getElementById('globalSearch');
+globalSearch.addEventListener('input',()=>{
+ const q=globalSearch.value.trim().toLowerCase();
+ document.querySelectorAll('.searchable').forEach(el=>el.classList.toggle('hidden',q && !el.dataset.search.includes(q)));
+});
+
+const filesInput=document.getElementById('evidenceFiles'),preview=document.getElementById('preview');
+filesInput.addEventListener('change',()=>{
+ preview.innerHTML='';
+ [...filesInput.files].slice(0,10).forEach(file=>{
+   const url=URL.createObjectURL(file);
+   const el=file.type.startsWith('video/')?document.createElement('video'):document.createElement('img');
+   el.src=url; if(el.tagName==='VIDEO') el.controls=true; preview.appendChild(el);
+ });
+});
+
+document.getElementById('reportForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const report={
+   createdAt:new Date().toISOString(),
+   player:document.getElementById('playerName').value,
+   playerId:document.getElementById('playerId').value,
+   clanRegion:document.getElementById('clanRegion').value,
+   gameMode:document.getElementById('gameMode').value,
+   categories:[...document.querySelectorAll('.checks input:checked')].map(x=>x.value),
+   description:document.getElementById('description').value,
+   evidence:[...filesInput.files].map(f=>({name:f.name,type:f.type,size:f.size})),
+   status:'Pendiente de revisión'
+ };
+ const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});
+ const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+ a.download='reporte_'+(report.player||'jugador').replace(/[^a-z0-9]/gi,'_')+'.json'; a.click();
+ document.getElementById('formStatus').innerHTML='<span class="ok">Reporte preparado y descargado. Las evidencias permanecen en tu dispositivo hasta conectarlo a un servidor.</span>';
+});
+document.getElementById('clearForm').addEventListener('click',()=>{document.getElementById('reportForm').reset();preview.innerHTML='';document.getElementById('formStatus').textContent=''});
+</script>
+
+</body></html>

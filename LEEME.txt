@@ -1,0 +1,25 @@
+WRDataHub Pro — listo para GitHub Pages
+
+CONTENIDO
+- Inicio moderno y adaptable a móvil.
+- Top Global con 3 capturas.
+- 8 jugadores del Top Global reportados por la comunidad, con 16 capturas en orden.
+- Mejores armas ligeras, medias y pesadas.
+- Robots recientes y destacados.
+- Titanes recientes.
+- Buscador.
+- Zoom de imágenes.
+- Formulario de reportes con previsualización de imágenes/videos.
+- Descarga del reporte en formato JSON.
+- No contiene nombres personales del propietario.
+
+IMPORTANTE SOBRE EL FORMULARIO
+GitHub Pages es un hosting estático. El formulario incluido previsualiza archivos y genera el reporte,
+pero para que los usuarios envíen y almacenen imágenes/videos de verdad debes conectarlo a:
+Supabase, Firebase, Cloudinary, Formspree (sin videos grandes) o un servidor propio.
+
+SUBIR A GITHUB
+1. Descomprime el ZIP.
+2. En el repositorio, usa Add file > Upload files.
+3. Sube index.html y la carpeta assets completa.
+4. Activa Settings > Pages > Deploy from branch > main > /(root).
